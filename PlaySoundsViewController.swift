@@ -21,6 +21,7 @@ class PlaySoundsViewController: UIViewController {
         if var filePath = NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3"){
             var filePathUrl = NSURL.fileURLWithPath(filePath)
             audioPlayer = AVAudioPlayer(contentsOfURL: filePathUrl, error: nil)
+            audioPlayer.enableRate = true
         }
         else{
             println("The audio filepath is not found")
@@ -34,10 +35,16 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playSlowAudio(sender: UIButton) {
-        // TODO: Play Audio slowly...
+        // Play Audio slowly...
         audioPlayer.play()
+        audioPlayer.rate = 0.5
     }
 
+    @IBAction func playFastAudio(sender: UIButton) {
+        // Play Audio fast!
+        audioPlayer.play()
+        audioPlayer.rate = 1.5
+    }
     /*
     // MARK: - Navigation
 
